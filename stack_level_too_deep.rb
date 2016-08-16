@@ -1,3 +1,6 @@
+##############################################################################
+# Script for https://github.com/rails/rails/issues/26122
+##############################################################################
 begin
   require "bundler/inline"
 rescue LoadError => e
@@ -7,7 +10,9 @@ end
 
 gemfile(true) do
   source "https://rubygems.org"
-  gem "rails", '4.2.7.1'
+  # gem "rails", '5.0.0' # fails
+  # gem "rails", '4.2.7.1' # works
+  gem "rails", github: 'rails/rails', branch: '4-2-stable' # works
   gem "sqlite3"
 end
 

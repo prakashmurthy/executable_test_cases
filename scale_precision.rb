@@ -13,8 +13,8 @@ gemfile(true) do
   # gem 'rails', '5.0.0' # fails
   # gem 'rails', '4.2.7.1' # fails
   # gem "rails", '4.2.1' # works
-  # gem "rails", github: "rails/rails", branch: '4-2-stable' # works
-  gem "rails", github: "rails/rails", branch: '4-1-stable' # fails
+  # gem "rails", github: "rails/rails", branch: '4-2-stable' # fails
+  gem "rails", github: "rails/rails", branch: '4-1-stable' # works
   gem "sqlite3"
   gem 'pry'
 end
