@@ -1,0 +1,1 @@
+[Executable Test Cases](http://guides.rubyonrails.org/contributing_to_ruby_on_rails.html#create-an-executable-test-case) for debugging [various issues on the official ruby on rails repository](https://github.com/rails/rails/issues)
