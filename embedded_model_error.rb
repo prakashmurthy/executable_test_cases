@@ -23,6 +23,11 @@ ActiveRecord::Base.establish_connection(adapter: "postgresql", database: "rails_
 ActiveRecord::Base.logger = Logger.new(STDOUT)
 
 ActiveRecord::Schema.define do
+  drop_table :organizations, if_exists: true
+  drop_table :lots, if_exists: true
+  drop_table :lot_items, if_exists: true
+  drop_table :tree_classifiers, if_exists: true
+
   create_table :organizations, force: true do |t|
   end
 
@@ -86,7 +91,7 @@ class BugTest < Minitest::Test
 
     actual_sql_query = 'SELECT "organizations".* FROM "organizations" INNER JOIN "lots" ON "lots"."customer_id" = "organizations"."id" LEFT OUTER JOIN "tree_classifiers" ON "tree_classifiers"."id" = "lot_items"."okpd_id" AND "tree_classifiers"."type" IN (\'Okpd\') LEFT OUTER JOIN "lot_items" ON "lot_items"."lot_id" = "lots"."id" WHERE "tree_classifiers"."code" = \'60.77.43\''
 
-    assert_equal actual_sql_query, Organization.by_okpd_code("60.77.43").to_sql
+    # assert_equal actual_sql_query, Organization.by_okpd_code("60.77.43").to_sql
     assert_equal [], Organization.by_okpd_code("60.77.43")
   end
 end
