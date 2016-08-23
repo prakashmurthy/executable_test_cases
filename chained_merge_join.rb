@@ -11,9 +11,10 @@ end
 gemfile(true) do
   source "https://rubygems.org"
   # gem "rails", '5.0.0' # works
-  # gem "rails", '4.2.5.2' # works
-  gem "rails", github: 'rails/rails' # works
-  gem "sqlite3"
+  gem "rails", '4.1.16' # works
+  # gem "rails", github: 'rails/rails' # works
+  # gem "sqlite3"
+  gem "pg", "~> 0.18.4"
 end
 
 require "active_record"
@@ -21,7 +22,8 @@ require "minitest/autorun"
 require "logger"
 
 # This connection will do for database-independent bug reports.
-ActiveRecord::Base.establish_connection(adapter: "sqlite3", database: ":memory:")
+# ActiveRecord::Base.establish_connection(adapter: "sqlite3", database: ":memory:")
+ActiveRecord::Base.establish_connection(adapter: "postgresql", database: "rails_app_care_test")
 ActiveRecord::Base.logger = Logger.new(STDOUT)
 
 ActiveRecord::Schema.define do
